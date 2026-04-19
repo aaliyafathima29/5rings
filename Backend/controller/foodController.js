@@ -580,15 +580,6 @@ exports.acceptDeliveryOrder = async (req, res) => {
 exports.updateDeliveryLocation = async (req, res) => {
   try {
     const { city, area, lat, lng, accuracy } = req.body;
-    console.log('delivery_location_update', {
-      orderId: req.params.id,
-      userId: req.user.id,
-      city,
-      area,
-      lat,
-      lng,
-      accuracy,
-    });
     const order = await Order.findById(req.params.id);
     if (!order) return res.status(404).json({ success: false, message: 'Order not found' });
 
